@@ -1,8 +1,17 @@
 import java.util.Scanner;
-
-
+/**
+ * Clase que agrupa todos los numeros primos de 1 a max
+ * @version 1.1, 16/02/22
+ * @author Gustavo A. Chavez M.
+ */
 public class Criba {
 
+    /**
+     * Metodo que genera todos los numeros primos (de 1 a max)
+     *
+     * @param max (valor introducido en teclado)
+     * @return primos si max >= 2 si no, return new int[0]
+     */
     public static int[] generarPrimos(int max) {
 
         // 0 y 1 no son números primos
@@ -15,13 +24,13 @@ public class Criba {
             //Criba
             for (int i = 2; i < Math.sqrt(max) + 1; i++) {
                 if (esPrimo[i]) {
-                    // Elimina los múltiplos de i
+                    // Elimina los multiplos de i
                     for (int j = 2 * i; j < max; j += i) {
                         esPrimo[j] = false;
                     }
                 }
             }
-            // Cantidad de números primos
+            // Cantidad de numeros primos
             int cuenta = 0;
             for (int i = 2; i < max; i++) {
                 if (esPrimo[i]) {
@@ -43,7 +52,10 @@ public class Criba {
         }
     }
 
-
+    /**
+     * Metodo que imprime los numeros primos
+     * @param args es una lista de argumentos
+     */
     public static void main(String[] args) {
         int max;
         //Solicita dato por teclado y lo registra
@@ -51,7 +63,7 @@ public class Criba {
         Scanner teclado = new Scanner(System.in);
         max = teclado.nextInt();
 
-        //Genera todos los número desde el 1 hasta max y los imprime
+        //Genera todos los numeros desde el 1 hasta max y los imprime
         System.out.print("\n\tVector inicial hasta " + max + " :");
         int[] vector = new int[max];
         for (int i = 0; i < vector.length; i++) {
@@ -59,7 +71,7 @@ public class Criba {
             System.out.print(i + 1 + "\t");
         }
 
-        //Genera solo los números primos que hay entre 1 y max , y los imprime
+        //Genera solo los numeros primos que hay entre 1 y max , y los imprime
         System.out.print("\n\n\tVector de primos hasta " + max + " :");
         vector = generarPrimos(max);
         for (int i = 0; i < vector.length; i++) {
